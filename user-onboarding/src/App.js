@@ -38,7 +38,7 @@ function App() {
   }
 
   const postNewUser = newUser => {
-    axios.post('http://reqrs.in/api/users', newUser)
+    axios.post('https://reqres.in/api/users', newUser)
       .then(resp => {
         setUsers([resp.data.data, ...users])
       }).catch(err => console.error(err))
@@ -79,6 +79,15 @@ function App() {
     schema.isValid(formValues).then(valid => setDisabled(!valid))
   }, [formValues])
 
+  // const printUser = () => {
+  //   users.map(usr => {
+  //     return (
+  //       <User key={usr.id} details={usr} />
+  //     )
+  //   })
+  // }
+  //console.log(printUser);
+
   return (
     <div className="container">
       <header><h1>User Onboarding</h1></header>
@@ -89,6 +98,20 @@ function App() {
           disabled={disabled}
           errors={formErrors}
         />
+
+      {
+        users.map(friend => {
+          return (
+            <User key={friend.id} details={friend} />
+          )
+        })
+      }
+
+        {/* <pre>
+          <code>
+            {JSON.stringify(printUser)}
+          </code>
+        </pre> */}
 
 
     </div>
