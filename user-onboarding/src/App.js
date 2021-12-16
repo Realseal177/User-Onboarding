@@ -18,7 +18,7 @@ const initialFormErrors = {
   last_name: '', 
   email: '', 
   password: '',
-  terms: false,
+  // terms: false,
 }
 const initialDisabled = true;
 
@@ -67,10 +67,9 @@ function App() {
       last_name: formValues.last_name.trim(),
       email: formValues.email.trim(),
       password: formValues.password.trim(),
-      // terms: ['terms'].filter(trm => !!formValues[trm])
+      terms: ['terms'].filter(trm => !!formValues[trm])
     }
     postNewUser(newUser);
-    // setUsers(users.concat(newUser));
   }
 
   useEffect(() => {
@@ -91,7 +90,7 @@ function App() {
   //console.log(printUser);
 
   return (
-    <div className="container">
+    <div className="container" id='background'>
       <header><h1>User Onboarding</h1></header>
         <Form
           values={formValues}
@@ -111,7 +110,7 @@ function App() {
 
         {/* <pre>
           <code>
-            {JSON.stringify(printUser)}
+            {JSON.stringify(printUser())}
           </code>
         </pre> */}
 
