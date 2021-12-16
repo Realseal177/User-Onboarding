@@ -32,7 +32,7 @@ function App() {
   const getUsers = () => {
     axios.get('https://reqres.in/api/users')
     .then(resp => {
-      console.log(resp.data.data);
+      //console.log(resp.data.data);
       setUsers(resp.data.data)
     }).catch(err => console.error(err))
   }
@@ -40,7 +40,8 @@ function App() {
   const postNewUser = newUser => {
     axios.post('https://reqres.in/api/users', newUser)
       .then(resp => {
-        setUsers([resp.data.data, ...users])
+        setUsers([resp.data, ...users])
+        console.log(resp.data);
       }).catch(err => console.error(err))
       .finally(() => setFormValues(initialFormValues))
   }
@@ -66,9 +67,10 @@ function App() {
       last_name: formValues.last_name.trim(),
       email: formValues.email.trim(),
       password: formValues.password.trim(),
-      terms: ['terms'].filter(trm => !!formValues[trm])
+      // terms: ['terms'].filter(trm => !!formValues[trm])
     }
     postNewUser(newUser);
+    // setUsers(users.concat(newUser));
   }
 
   useEffect(() => {
@@ -100,9 +102,9 @@ function App() {
         />
 
       {
-        users.map(friend => {
+        users.map(user => {
           return (
-            <User key={friend.id} details={friend} />
+            <User key={user.id} details={user} />
           )
         })
       }

@@ -8,8 +8,8 @@ function User({details}) {
 
     return (
         <div className='user container'>
-            <h2>First: {details.first_name}</h2>
-            <h2>Last: {details.last_name}</h2>
+            <h4>First: {details.first_name}</h4>
+            <h4>Last: {details.last_name}</h4>
             <p>Email: {details.email}</p>
             <p>Password: {details.password}</p>
         </div>
