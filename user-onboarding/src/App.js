@@ -1,10 +1,11 @@
 
 import './App.css';
 
+
 function App() {
   return (
-    <div className="App">
-      
+    <div className="container">
+      <header><h1>User Onboarding</h1></header>
     </div>
   );
 }
