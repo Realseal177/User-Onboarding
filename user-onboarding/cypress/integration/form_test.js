@@ -61,4 +61,24 @@ describe('User Onboarding', () => {
         })
     })
 
+    describe('Adding a new user', () => {
+        it('can add a new user', () => {
+            firstName().type("Drew");
+            lastName().type("Nelson");
+            eMail().type("bloomer@gmail.com")
+            passWord().type("boopbeepbop")
+            submitBtn().click();
+        })
+    })
+
+    describe('first name is valid before submitting', () => {
+        it('can check if first name input is filled correctly', () => {
+            cy.get('[type="submit"]').click()
+            cy.get('input:invalid').should('have.length', 2)
+            cy.get('#first_name').then(($input) => {
+                expect($input[0].validationMessage).to.eq('Please fill out this field.')
+            })
+        })
+    })
+
 })
