@@ -28,6 +28,37 @@ describe('User Onboarding', () => {
         checkBox().should('exist');
     })
 
-    // describe('Filling out inputs and clearing when submitted')
+    describe('Filling out inputs and clearing when submitted', () => {
+        it('can navigate to the site', () => {
+            cy.url().should('include', 'localhost');
+        })
+
+        it('can type in text inputs', () => {
+            firstName()
+                .should('have.value', '')
+                .type('Bitcoin is hope')
+                .should('have.value', 'Bitcoin is hope')
+
+            lastName()
+                .should('have.value', '')
+                .type('Snoobles and Baboo')
+                .should('have.value', 'Snoobles and Baboo')
+            
+            eMail()
+                .should('have.value', '')
+                .type('dudeBro@gmail.com')
+                .should('have.value', 'dudeBro@gmail.com')
+
+            passWord()
+                .should('have.value', '')
+                .type('boopbeepbop')
+                .should('have.value', 'boopbeepbop')
+        })
+
+        it('can check the checkbox', () => {
+            checkBox()
+                .check({ force: true })
+        })
+    })
 
 })
